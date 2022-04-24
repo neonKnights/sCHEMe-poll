@@ -16,6 +16,15 @@ import (
 //go:embed token.txt
 var token string
 
+var introtext string = "" +
+	"# WITAJ W ANKIECIE DOTYCZĄCEJ GRY S(CHEM)E\n" +
+	"Jeżeli zagrałeś włąśnie w naszą grę\n" +
+	"i masz chwilę czasu, poświęć ją proszę\n" +
+	"na odpowiedź na kilka prostych pytań dotyczących\n" +
+	"Twoich ogólnych odczuć na temat naszej gry.\n" +
+	"\n" +
+	"Nie masz jeszcze gry? [Pobierz ją tutaj!](https://github.com/neonknights/sCHEMe-website/releases/latest)"
+
 var (
 	layout           int
 	max              int = 4
@@ -60,10 +69,10 @@ func loop() {
 					}),
 				).Size(giu.Auto, float32(windowH-80)),
 				giu.Row(
-					giu.Button("<< Previous").Disabled(layout == 0).OnClick(func() {
+					giu.Button("<< Poprzedni").Disabled(layout == 0).OnClick(func() {
 						layout--
 					}),
-					giu.Button("Next >>").Disabled(layout == max).OnClick(func() {
+					giu.Button("Dalej >>").Disabled(layout == max).OnClick(func() {
 						layout++
 					}),
 				),
@@ -75,9 +84,8 @@ func loop() {
 func mainLayout() {
 	giu.Layout{
 		giu.Align(giu.AlignCenter).To(
-			giu.Label("Witaj w ankiecie na temat gry S(CHEM)E"),
-			giu.Label("Jeśli masz chwilę, odpowiedz Nam na kilka pytań,"),
-			giu.Label("Aby pomóc nam w rozwoju gry"),
+			giu.Markdown(&introtext).
+				Header(0, (giu.GetDefaultFonts())[0].SetSize(32), true),
 			giu.Row(
 				giu.Label("Podaj swoje imię/nick lub co kolwiek innego po czym będziemy mogli cię zidentyfikować: "),
 				giu.InputText(&dataname).Size(200),
