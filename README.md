@@ -48,4 +48,4 @@ I'll write some framework for such a surveys...
 
 As I wrote, I'm not going to develop this project as it was just a single-task
 project that succeed. I don't recommend to re-use this anyway.
-However if you felt some nned of contribution, you would be welcome!
+However if you felt some need of contribution, you would be welcome!
